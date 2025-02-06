@@ -232,26 +232,39 @@
 
     <!-- Mail Success Page -->
     <section class="mail-seccess section">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6 col-12">
-            <!-- Error Inner -->
-            <div class="success-inner">
-              <h1>
-                <i class="icofont-send-mail"></i
-                ><span>Your Mail Sent Successfully!</span>
-              </h1>
-              <p>
-                Aenean eget sollicitudin lorem, et pretium felis. Nullam euismod
-                diam libero, sed dapibus leo laoreet ut. Suspendisse potenti.
-                Phasellus urna lacus
-              </p>
-              <a href="index.html" class="btn">Go Home</a>
-            </div>
-            <!--/ End Error Inner -->
-          </div>
+     <!-- Button to Open Modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal">
+  Show Success Message
+</button>
+
+<!-- Modal Structure -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Mail Sent Successfully!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="success-inner">
+          <h1>
+            <i class="icofont-send-mail"></i>
+            <span>Your Mail Sent Successfully!</span>
+          </h1>
+          <p>
+            Aenean eget sollicitudin lorem, et pretium felis. Nullam euismod
+            diam libero, sed dapibus leo laoreet ut. Suspendisse potenti.
+            Phasellus urna lacus
+          </p>
+          <a href="index.html" class="btn">Go Home</a>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     </section>
     <!--/ End Mail Success -->
 

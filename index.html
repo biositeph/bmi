@@ -206,76 +206,135 @@
               </div>
             </div>
 
-            <!-- ============modal============ -->
-             <!-- ============modalPO REQUEST============ -->
-            <div class="modal fade" id="porequest" tabindex="-1" aria-labelledby="porequestLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <div class="d-flex align-items-center">
-                      <i class="fas fa-file-invoice" style="font-size: 24px; margin-right: 10px;"></i>
-                      <h1 class="modal-title fs-5" id="porequestLabel" style="color: rgb(0, 0, 0);">PURCHASED ORDER</h1>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <p class="mb-3">
-                      Please fill out this form to submit your purchased order request. Once completed, you can follow up on the status of your request using the provided details.
-                    </p>
-                    <form>
-                      <div class="mb-3">
-                        <label for="first-name" class="col-form-label">First Name</label>
-                        <input type="text" class="form-control" id="first-name" placeholder="Enter your first name">
-                      </div>
-                      <div class="mb-3">
-                        <label for="last-name" class="col-form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last-name" placeholder="Enter your last name">
-                      </div>
-                      <div class="mb-3">
-                        <label for="email" class="col-form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                      </div>
-                      <div class="mb-3">
-                        <label for="company-name" class="col-form-label">Company Name</label>
-                        <input type="text" class="form-control" id="company-name" placeholder="Enter your company name">
-                      </div>
-                      <div class="mb-3">
-                        <label for="position" class="col-form-label">Position</label>
-                        <input type="text" class="form-control" id="position" placeholder="Enter your position">
-                      </div>
-                      <div class="mb-3">
-                        <label for="po-number" class="col-form-label">Purchased Order Number</label>
-                        <input type="text" class="form-control" id="po-number" placeholder="Enter your purchased order number">
-                      </div>
-                      <div class="mb-3">
-                        <label for="po-file" class="col-form-label">Upload Purchased Order File</label>
-                        <input type="file" class="form-control" id="po-file">
-                      </div>
-                      <div class="mb-3 row">
-                        <div class="col-md-6">
-                          <label for="date-of-order" class="col-form-label">Date of Request</label>
-                          <input type="text" class="form-control" id="date-of-order" readonly>
-                        </div>
-                        <div class="col-md-6">
-                          <label for="date-of-delivery" class="col-form-label">Date of Delivery</label>
-                          <input type="date" class="form-control" id="date-of-delivery">
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="description" class="col-form-label">Message or Description</label>
-                        <textarea class="form-control" id="description" rows="3" placeholder="Add additional information or instructions"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit Request</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <script>
+<!-- PURCHASE ORDER Request Modal -->
+<div class="modal fade" id="porequest" tabindex="-1" aria-labelledby="porequestLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-file-invoice" style="font-size: 24px; margin-right: 10px;"></i>
+          <h1 class="modal-title fs-5" id="porequestLabel" style="color: rgb(0, 0, 0);">PURCHASED ORDER</h1>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-3">
+
+<!-- ===========Followup Modal for Code Generated========== -->
+
+        <button class="btn btn-primary" onclick="showFollowUpModal()">Follow Ticket</button>
+
+<!--  Modal -->
+<div class="modal fade" id="followUpModal" tabindex="-1" aria-labelledby="followUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="followUpModalLabel">Check Your Ticket Status</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <input type="text" id="orderCode" class="form-control" readonly>
+              <button class="btn btn-success mt-2" onclick="checkOrderStatus()">Check Status</button>
+              <p id="statusMessage" class="mt-2"></p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let poCode = document.getElementById("submittedPOCode").innerText;
+      storePOCode(poCode);
+  });
+</script>
+
+<!-- ===========End Followup Modal for Code Generated========== -->
+
+          Please fill out this form to submit your purchased order request. Once completed, you can follow up on the status of your request using the provided details.
+        </p>
+        <form id="poForm">
+          <!-- Form Fields -->
+          <div class="mb-3">
+            <label for="first-name" class="col-form-label">First Name</label>
+            <input type="text" class="form-control" id="first-name" placeholder="Enter your first name" required>
+          </div>
+          <div class="mb-3">
+            <label for="last-name" class="col-form-label">Last Name</label>
+            <input type="text" class="form-control" id="last-name" placeholder="Enter your last name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="col-form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="company-name" class="col-form-label">Company Name</label>
+            <input type="text" class="form-control" id="company-name" placeholder="Enter your company name" required>
+          </div>
+          <div class="mb-3">
+            <label for="position" class="col-form-label">Position</label>
+            <input type="text" class="form-control" id="position" placeholder="Enter your position" required>
+          </div>
+          <div class="mb-3">
+            <label for="po-number" class="col-form-label">Purchased Order Number</label>
+            <input type="text" class="form-control" id="po-number" placeholder="Enter your purchased order number" required>
+          </div>
+          <div class="mb-3">
+            <label for="po-file" class="col-form-label">Upload Purchased Order File</label>
+            <input type="file" class="form-control" id="po-file" required>
+          </div>
+          <div class="mb-3 row">
+            <div class="col-md-6">
+              <label for="date-of-order" class="col-form-label">Date of Request</label>
+              <input type="text" class="form-control" id="date-of-order" readonly>
+            </div>
+            <div class="col-md-6">
+              <label for="date-of-delivery" class="col-form-label">Date of Delivery</label>
+              <input type="date" class="form-control" id="date-of-delivery" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="col-form-label">Message or Description</label>
+            <textarea class="form-control" id="description" rows="3" placeholder="Add additional information or instructions" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="submitForm">Submit Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel"><i class="icofont-send-mail"></i> Success!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="success-inner">
+          <p>Use the following code to follow up on your purchase order request</p>
+          <h4 id="requestCode" class="text-primary"></h4> <!-- Display Request Code -->
+          <p>You can use this code to check the status of your request.</p>
+          <a href="index.html" class="btn">Go Home</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
   // Automatically set the Date of Order when the modal is shown
   document.getElementById('porequest').addEventListener('show.bs.modal', function () {
     const dateOfOrderInput = document.getElementById('date-of-order');
@@ -291,7 +350,28 @@
     });
     dateOfOrderInput.value = formattedDate;
   });
-            </script>
+
+  // Handle form submission
+  document.getElementById('submitForm').addEventListener('click', function() {
+    const form = document.getElementById('poForm');
+    
+    if (form.checkValidity()) {
+      // Hide the Purchase Order Form modal
+      $('#porequest').modal('hide');
+      
+      // Generate a unique request code
+      const requestCode = 'PO' + Math.random().toString(36).substr(2, 9).toUpperCase();
+
+      // Display the success message modal and show the generated request code
+      document.getElementById('requestCode').innerText = requestCode;
+
+      // Show the Success Message modal
+      $('#successModal').modal('show');
+    } else {
+      form.reportValidity(); // Trigger HTML5 validation
+    }
+  });
+</script>
 <!-- ============modal============ -->
 
 <!-- ===============after sales service ================= -->
@@ -971,10 +1051,12 @@
         </div>
         <div class="col-lg-3 col-md-6 col-12">
           <div class="single-footer">
-            <h2>Newsletter</h2>
+            <h2>📍 Stay Connected:</h2>
             <p>
-              subscribe to our newsletter to get allour news in your inbox..
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          Follow us for updates on medical training, innovations, and events.
+           <br>
+
+            💙 #BiositeMedical #HealthcareInnovation
             </p>
             <form
               action="mail/mail.php"
@@ -1064,6 +1146,8 @@
     </script>
     <script src="/js/modalscript.js"></script>
 
+    <script src="js/followuppo.js"></script>
+
     <div id="fb-root"></div>
 
 </html>
@@ -1091,8 +1175,41 @@
 <!-- Your customer chat code -->
 <div class="fb-customerchat"
   attribution="setup_tool"
-  page_id="YOUR_PAGE_ID"
+  page_id="460078043846871"
   theme_color="#0084ff"
-  logged_in_greeting="Hi! How can we help you?"
-  logged_out_greeting="Hi! Please log in to chat with us.">
+  logged_in_greeting=""
+  logged_out_greeting="">
 </div>
+
+<!-- Custom Messenger Icon -->
+<style>
+  /* Hide the default Messenger text greeting completely */
+  .fb-customerchat .fb_dialog {
+    display: none !important;
+  }
+
+  /* Create button for Facebook Messenger logo */
+  #customMessengerButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/Facebook_Messenger_logo_2023.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+</style>
+
+<!-- Custom Messenger Button -->
+<div id="customMessengerButton" onclick="openMessenger()"></div>
+
+<script>
+  function openMessenger() {
+    FB.CustomerChat.show(true);
+  }
+</script>
+
+
