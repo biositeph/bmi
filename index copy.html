@@ -47,10 +47,8 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-
     <!-- Color CSS -->
     <link rel="stylesheet" href="css/color/color1.css" />
-
     <link rel="stylesheet" id="colors" />
   </head>
   <body>
@@ -82,12 +80,92 @@
           <div class="row">
             <div class="col-lg-6 col-md-5 col-12">
               <!-- Contact -->
-              <ul class="top-link">
-                <li><a href="about.html">About</a></li>
-                <li><a href="doctors.html">Doctors</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="faq.html">FAQ</a></li>
+                <ul class="top-link">
+                  <li><a href="quotationRequest" data-bs-toggle="modal" data-bs-target="#quotationRequest" data-bs-whatever="@mdo">Request a Quote</a></li>|
+                  <li><a href="porequest" data-bs-toggle="modal" data-bs-target="#porequest" data-bs-whatever="@mdo">Purchased Order</a></li>|
+                  <li><a href="aftersalesService" data-bs-toggle="modal" data-bs-target="#aftersalesService" data-bs-whatever="@mdo">After Sales Services</a></li>   
               </ul>
+
+               <!-- ============modal QOUTATION REQUEST ============ -->
+            <div class="modal fade" id="quotationRequest" tabindex="-1" aria-labelledby="quotationRequestLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="d-flex align-items-center">
+                      <!-- Icon beside the modal title -->
+                      <i class="fas fa-file-invoice" style="font-size: 24px; margin-right: 10px;"></i>
+                      <h1 class="modal-title fs-5" id="quotationRequestLabel" style="color: rgb(0, 0, 0);">REQUEST A QUOTE</h1>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="mb-3">Please provide the details below to request a quotation. We'll be in touch shortly with the pricing details.</p>
+                    <form>
+                      <div class="mb-3">
+                        <label for="full-name" class="col-form-label">Full Name</label>
+                        <input type="text" class="form-control" id="full-name" placeholder="Enter your full name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="existing-customer" class="col-form-label">Are you an existing customer?</label>
+                        <div>
+                          <input type="radio" class="form-check-input" id="new-customer" name="customer-type" value="new">
+                          <label class="form-check-label" for="new-customer">New</label>
+                          <input type="radio" class="form-check-input" id="existing-customer" name="customer-type" value="existing">
+                          <label class="form-check-label" for="existing-customer">Existing</label>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="item-order" class="col-form-label">What is the item you would like to order?</label>
+                        <input type="text" class="form-control" id="item-order" placeholder="Enter the item or service you need">
+                      </div>
+                      <div class="mb-3">
+                        <label for="company-name" class="col-form-label">Name of the Company</label>
+                        <input type="text" class="form-control" id="company-name" placeholder="Enter your company's name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="position-title" class="col-form-label">Position/Title</label>
+                        <input type="text" class="form-control" id="position-title" placeholder="Enter your position or title">
+                      </div>
+                      <div class="mb-3">
+                        <label for="phone-number" class="col-form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone-number" placeholder="Enter your phone number">
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="col-form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                      </div>
+                      <div class="mb-3">
+                        <label for="preferred-contact-method" class="col-form-label">Preferred Contact Method</label>
+                        <div>
+                          <input type="checkbox" class="form-check-input" id="contact-phone" value="phone">
+                          <label class="form-check-label" for="contact-phone">Phone</label>
+                        </div>
+                        <div>
+                          <input type="checkbox" class="form-check-input" id="contact-email" value="email">
+                          <label class="form-check-label" for="contact-email">Email</label>
+                        </div>
+                        <div>
+                          <input type="checkbox" class="form-check-input" id="contact-whatsapp" value="whatsapp">
+                          <label class="form-check-label" for="contact-whatsapp">WhatsApp</label>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="preferred-brands" class="col-form-label">What brands would you like to order?</label>
+                        <input type="text" class="form-control" id="preferred-brands" placeholder="Enter the brands you are interested in">
+                      </div>
+                      <div class="mb-3">
+                        <label for="comments" class="col-form-label">Questions and Comments</label>
+                        <textarea class="form-control" id="comments" rows="3" placeholder="Enter any questions or additional comments"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit Request</button>
+                  </div>
+                </div>
+              </div>
+            </div>
               <!-- End Contact -->
             </div>
             <div class="col-lg-6 col-md-7 col-12">
